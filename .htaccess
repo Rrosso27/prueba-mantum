@@ -1,0 +1,68 @@
+# Activar el motor de reescritura de URLs
+RewriteEngine On
+
+# Redirigir todas las solicitudes a index.php (excepto archivos y carpetas existentes)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
+
+# Bloquear acceso directo a archivos sensibles
+<FilesMatch "(config\.php|env\.php)">
+    Order Deny,Allow
+    Deny from all
+</FilesMatch>
+
+# Deshabilitar el listado de directorios
+Options -Indexes
+
+# Asegurar que PHP maneje los errores correctamente
+php_flag display_errors Off
+php_flag log_errors On
+php_value error_log logs/php_errors.log
+
+# Definir página de error personalizada
+ErrorDocument 404 /views/errors/404.php
+
+
+# Desactivar la visualización de errores en producción
+php_flag display_errors Off
+
+# Habilitar el registro de errores
+php_flag log_errors On
+
+# Especificar el archivo donde se guardarán los errores
+php_value error_log "logs/php_errors.log"
+# Activar el motor de reescritura de URLs
+RewriteEngine On
+
+# Redirigir todas las solicitudes a index.php (excepto archivos y carpetas existentes)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
+
+# Bloquear acceso directo a archivos sensibles
+<FilesMatch "(config\.php|env\.php)">
+    Order Deny,Allow
+    Deny from all
+</FilesMatch>
+
+# Deshabilitar el listado de directorios
+Options -Indexes
+
+# Asegurar que PHP maneje los errores correctamente
+php_flag display_errors Off
+php_flag log_errors On
+php_value error_log logs/php_errors.log
+
+# Definir página de error personalizada
+ErrorDocument 404 /views/errors/404.php
+
+
+# Desactivar la visualización de errores en producción
+php_flag display_errors Off
+
+# Habilitar el registro de errores
+php_flag log_errors On
+
+# Especificar el archivo donde se guardarán los errores
+php_value error_log "logs/php_errors.log"
